@@ -2,22 +2,18 @@ pipeline {
   agent any
   
   stages {
-    stage("build"){
+    stage("frontend"){
       steps {
-        echo "building"
-        echo "new change"
+        echo "frontend"
+        node('NodeJS 19.7.0'){
+          sh "yarn install" 
+        }
       }
     }
     
-    stage ("test"){
+    stage ("backend"){
       steps {
-        echo "testing"
-      }
-    }
-    
-    stage ("deploy"){
-      steps {
-        echo "deploying"
+        echo "backend"
       }
     }
   }
