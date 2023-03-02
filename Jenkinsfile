@@ -1,13 +1,13 @@
 pipeline {
-  agent any
+  agent {
+    docker { image: 'python:3.10.7-alpine' } 
+  }
   
   stages {
     stage("frontend"){
       steps {
         echo "frontend"
-        node('NodeJS-19.7.0'){
-          sh "yarn install" 
-        }
+        sh 'python --version'
       }
     }
     
