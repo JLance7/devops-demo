@@ -1,19 +1,23 @@
 pipeline {
-  agent {
-    docker { image: 'python:3.10.7-alpine' } 
-  }
-  
+
+  agent any
+
   stages {
-    stage("frontend"){
+    stage("build") {
       steps {
-        echo "frontend"
-        sh 'python --version'
+        echo 'building'
       }
     }
-    
-    stage ("backend"){
+
+    tage("test") {
       steps {
-        echo "backend"
+        echo 'testing'
+      }
+    }
+
+    tage("deploy") {
+      steps {
+        echo 'deploying' gcpcthitrdparties
       }
     }
   }

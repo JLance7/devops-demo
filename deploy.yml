@@ -1,5 +1,36 @@
-# For dev docker compose
+# docker compose for deployment
 services:
+  # deploy app dockerfiles
+  frontend:
+    image: 272385075025.dkr.ecr.us-east-2.amazonaws.com/todoapp-react:latest
+    ports:
+      - 3000:3000
+
+  # Build local app dockerfiles for testing
+  # react UI
+  # frontend:
+  #   image: node-alpine:16.0
+  #   build: ./react
+  #   container_name: react
+  #   restart: always
+  #   ports:
+  #     - "3000:3000"
+  #   labels:
+  #     - "ENV_MODE=dev"
+
+  # express server
+  # backend:
+  #   image: node-alpine:16.0
+  #   build: ./server
+  #   container_name: express
+  #   restart: always
+  #   ports:
+  #     - "2000:2000"
+  #   depends_on:
+  #     - mongo
+  #   labels:
+  #     - "ENV_MODE=dev"
+
   # dependency containers
   mongo:
     image: mongo
@@ -28,8 +59,8 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongodb
     networks:
       - mongo-net
-
-  # to run jenkins locally (can comment out)
+  
+   # to run jenkins locally (can comment out)
   jenkins:
     image: jenkins/jenkins:latest
     container_name: my-jenkins

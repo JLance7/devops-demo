@@ -12,12 +12,13 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const express_port = process.env.EXPRESS_SERVER_PORT ? process.env.EXPRESS_SERVER_PORT : 2000
-const mongo_url = 'mongodb://root:password@localhost:1000/'
+const mongo_url_local = 'mongodb://root:password@localhost:1000/'
+const mongo_url_docker = 'mongodb://root:password@mongodb:1000/'
 
 app.listen(express_port, {useNewUrlParser: true}, (req, res) => {
   console.log(`listening on port ${express_port}`)
 
-  mongoose.connect(mongo_url, err => {
+  mongoose.connect(mongo_url_docker, err => {
     if (err) console.log(err)
     else {
       console.log('connected to db')

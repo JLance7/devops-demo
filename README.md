@@ -18,6 +18,7 @@
 - React UI at: [http://localhost:3000]   
 - Node.js server at: [http://localhost:2000]   
 - View db at: [http://localhost:1001] 
+- Jenkins locally at: [http://localhost:8080]
 
 **To stop app run:**    
 ```
@@ -26,13 +27,21 @@
 ```
 # collapsible
 <details>
-  <summary>Click me!</summary>
-  
-  hi  
-  hello
+  <summary>To run just jenkins locally in one command</summary>
+  ### To run jenkins docker from command (replace \ with  for windows):
+  ```
+  docker run --name jenkins --restart=on-failure -d \
+    --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+    --env DOCKER_CERT_PATH=~/Documents/cert/ \
+    --publish 8080:8080 --publish 50000:50000 \
+    --volume jenkins_home:/var/jenkins_home \
+    --volume jenkins-certs:/certs/client:ro \
+    --volume /var/run/docker.sock:/var/run/docker.sock \
+    jenkins/jenkins:latest
+  ```
 </details>
----
+
 
 ## For deployment
-Commit changes to repo  
-Jenkins pipeline will run and deploy code 
+
+
