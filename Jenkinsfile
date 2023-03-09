@@ -9,13 +9,13 @@ pipeline {
       }
     }
 
-    tage("test") {
+    stage("test") {
       steps {
         echo 'testing'
       }
     }
 
-    tage("deploy") {
+    stage("deploy") {
       steps {
         echo 'deploying' gcpcthitrdparties
       }
