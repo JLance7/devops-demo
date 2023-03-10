@@ -30,14 +30,14 @@
   <summary>To run just jenkins locally in one command</summary>
   ### To run jenkins docker from command (replace \ with  for windows):
   ```
-  docker run --name jenkins --restart=on-failure -d \
-    --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
-    --env DOCKER_CERT_PATH=~/Documents/cert/ \
-    --publish 8080:8080 --publish 50000:50000 \
-    --volume jenkins_home:/var/jenkins_home \
-    --volume jenkins-certs:/certs/client:ro \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    jenkins/jenkins:latest
+  docker run --name jenkins --restart=on-failure -d \  
+    --network jenkins --env DOCKER_HOST=tcp://docker:2376 \     
+    --env DOCKER_CERT_PATH=~/Documents/cert/ \  
+    --publish 8080:8080 --publish 50000:50000 \  
+    --volume jenkins_home:/var/jenkins_home \  
+    --volume jenkins-certs:/certs/client:ro \  
+    --volume /var/run/docker.sock:/var/run/docker.sock \  
+    jenkins/jenkins:latest  
   ```
 </details>
 
