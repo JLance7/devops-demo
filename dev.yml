@@ -1,0 +1,53 @@
+# For dev docker compose
+services:
+  # dependency containers
+  mongo:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - "1000:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${root:-MONGO_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${password:-MONGO_PASSWORD}"
+      MONGO_INITDB_DATABASE: app-db
+    networks:
+      - mongo-net
+    volumes:
+      - mongo-data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - "1001:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME:  "${root:-MONGO_USERNAME}"
+      ME_CONFIG_MONGODB_ADMINPASSWORD: "${password:-MONGO_PASSWORD}"
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - mongo-net
+
+  # to run jenkins locally (can comment out)
+  jenkins:
+    image: jenkins/jenkins:latest
+    container_name: my-jenkins
+    restart: always
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+# network
+networks:
+  mongo-net:
+    name: mongo-net
+# volume
+volumes:
+  mongo-data:
+    driver: local
+  jenkins_home:
+    driver: local
