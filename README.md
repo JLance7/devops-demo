@@ -1,4 +1,4 @@
-# Todo app with devops tools
+# Todo app 
 ## Tools used:
 - node.js/react UI
 - node.js/express server
