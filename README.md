@@ -1,8 +1,5 @@
 # Todo app with devops tools
 ## Tools used:
-- docker & docker-compose 
-- jenkins
-- terraform 
 - node.js/react UI
 - node.js/express server
 - mongodb & mongo-express
@@ -18,7 +15,6 @@ test2
 - React UI at: [http://localhost:3000]   
 - Node.js server at: [http://localhost:2000]   
 - View db at: [http://localhost:1001] 
-- Jenkins locally at: [http://localhost:8080]
 
 **To stop app run:**    
 ```
@@ -42,6 +38,5 @@ test2
 </details>
 
 
-## For deployment
 
 
