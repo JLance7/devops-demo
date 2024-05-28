@@ -1,11 +1,11 @@
-# Todo app with devops tools
+# Todo app 
 ## Tools used:
-- docker & docker-compose 
+- docker-compose 
 - node.js/react UI
 - node.js/express server
 - mongodb & mongo-express
 ---
-
+test2
 ## For local development:
 
 **To start app run:**  
@@ -27,14 +27,14 @@
 <details>
   <summary>Jenkins notes (unrelated)</summary>
   ```
-  docker run --name jenkins --restart=on-failure -d \
-    --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
-    --env DOCKER_CERT_PATH=~/Documents/cert/ \
-    --publish 8080:8080 --publish 50000:50000 \
-    --volume jenkins_home:/var/jenkins_home \
-    --volume jenkins-certs:/certs/client:ro \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    jenkins/jenkins:latest
+  docker run --name jenkins --restart=on-failure -d \  
+    --network jenkins --env DOCKER_HOST=tcp://docker:2376 \     
+    --env DOCKER_CERT_PATH=~/Documents/cert/ \  
+    --publish 8080:8080 --publish 50000:50000 \  
+    --volume jenkins_home:/var/jenkins_home \  
+    --volume jenkins-certs:/certs/client:ro \  
+    --volume /var/run/docker.sock:/var/run/docker.sock \  
+    jenkins/jenkins:latest  
   ```
 </details>
 
