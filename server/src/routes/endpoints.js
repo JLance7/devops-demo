@@ -2,6 +2,10 @@ const express = require('express')
 const router = express.Router()
 const model = require('../model')
 
+router.get('/', (req, res) => {
+  res.send({'response': 'hi'})
+})
+
 router.get('/get-items', async (req, res) => {
   try {
     const items = await model.find().sort({timestamp: "desc"})

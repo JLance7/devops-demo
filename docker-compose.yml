@@ -1,5 +1,4 @@
 services:
-  # For deploying
   # -------------
   # react UI
   # frontend:
@@ -10,9 +9,9 @@ services:
   #   ports:
   #     - "3000:3000"
   #   labels:
-      # - "ENV_MODE=dev"
+  #     - "ENV_MODE=dev"
 
-  # express server
+  # # express server
   # backend:
   #   image: node-alpine:16.0
   #   build: ./server
@@ -26,19 +25,16 @@ services:
   #     - "ENV_MODE=dev"
 
 
-  # For dev & deployment
-  # --------------------
-  # dependency containers
   mongo:
     image: mongo
     container_name: mongodb
     restart: always
     ports:
       - "1000:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "${root:-MONGO_USERNAME}"
-      MONGO_INITDB_ROOT_PASSWORD: "${password:-MONGO_PASSWORD}"
-      MONGO_INITDB_DATABASE: app-db
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: password
+    #   MONGO_INITDB_DATABASE: app-db
     networks:
       - mongo-net
     volumes:
@@ -48,12 +44,14 @@ services:
     image: mongo-express
     container_name: mongo-express
     restart: always
+    depends_on:
+      - mongo
     ports:
       - "1001:8081"
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME:  "${root:-MONGO_USERNAME}"
-      ME_CONFIG_MONGODB_ADMINPASSWORD: "${password:-MONGO_PASSWORD}"
-      ME_CONFIG_MONGODB_SERVER: mongodb
+    # environment:
+    #   ME_CONFIG_MONGODB_ADMINUSERNAME:  root
+    #   ME_CONFIG_MONGODB_ADMINPASSWORD: password
+    #   ME_CONFIG_MONGODB_SERVER: mongo
     networks:
       - mongo-net
 

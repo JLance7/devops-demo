@@ -1,8 +1,6 @@
 # Todo app with devops tools
 ## Tools used:
 - docker & docker-compose 
-- jenkins
-- terraform 
 - node.js/react UI
 - node.js/express server
 - mongodb & mongo-express
@@ -18,17 +16,16 @@
 - React UI at: [http://localhost:3000]   
 - Node.js server at: [http://localhost:2000]   
 - View db at: [http://localhost:1001] 
-- Jenkins locally at: [http://localhost:8080]
 
 **To stop app run:**    
 ```
   cd todo-app
   docker compose down
 ```
+![img](thumbnail.png)
 # collapsible
 <details>
-  <summary>To run just jenkins locally in one command</summary>
-  ### To run jenkins docker from command (replace \ with  for windows):
+  <summary>Jenkins notes (unrelated)</summary>
   ```
   docker run --name jenkins --restart=on-failure -d \
     --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
@@ -42,6 +39,5 @@
 </details>
 
 
-## For deployment
 
 

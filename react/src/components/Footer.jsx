@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className='footer'>
       <div className='inner-footer'>
-        <p style={{color: 'white', fontSize: 18, paddingTop: 15, paddingBottom: 10, marginLeft: 20}}>Devops Demo</p>
+        <p style={{color: 'white', fontSize: 18, paddingTop: 15, paddingBottom: 10, marginLeft: 20}}>Todo app</p>
       </div>
     </div>
   )
